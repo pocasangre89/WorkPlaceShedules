@@ -4,6 +4,7 @@ obj/
 *.user
 *.suo
 *.swp
+.vs/
 
 # Visual Studio Code
 .vscode/
@@ -28,4 +29,3 @@ obj/
 
 # Archivos de generación de documentación
 *.xml
-.vs/

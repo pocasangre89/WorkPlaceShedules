@@ -25,7 +25,7 @@ namespace WorkPlaceShedules.Application.Services
             var UsersEntity = await _usersRepository.GetAllAsync();
 
             var UsersResponseModel = _mapper.Map<IEnumerable<UsersResponseModel>>(UsersEntity);
-
+                
             return UsersResponseModel;
         }
 
@@ -43,6 +43,7 @@ namespace WorkPlaceShedules.Application.Services
         {
             var usersResponseModel = _mapper.Map<UsersEntity>(entity);
             await _usersRepository.AddAsync(usersResponseModel);
+            await _usersRepository.SaveChangesAsync();
         }
 
         public async Task Update(UsersRequestModel entity, int id)
@@ -51,11 +52,13 @@ namespace WorkPlaceShedules.Application.Services
 
             var usersRequestModel = _mapper.Map(entity, usersEntity);
             await _usersRepository.UpdateAsync(usersRequestModel);
+            await _usersRepository.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
         {
             await _usersRepository.DeleteAsync(id);
+            await _usersRepository.SaveChangesAsync();
         }
 
 

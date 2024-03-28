@@ -11,27 +11,24 @@ namespace WorkPlaceShedules.Domain.Entities
     {
         [Key]
         public int UserWorkPlaceScheduleId { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        [Required]
+        public int WorkPlaceId { get; set; }
+        [Required]
+        public int GroupId { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Schedule { get; set; }
+        [Required] 
         public bool IsAdminRequest { get; set; } = false;
+        [Required]
         public bool IsActive { get; set; } = true;
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; } = DateTime.Now;
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Modified { get; set; } = DateTime.Now;
         public string Creator { get; set; } = "admin";
         public string Modifier { get; set; } = "admin";
 
-        public virtual UsersEntity UsersEntityP { get; set; } = new UsersEntity();
-        public int UserId { get; set; }
-
-        public virtual WorkPlacesEntity WorkPlacesP { get; set; } = new WorkPlacesEntity();
-        public int WorkPlaceId { get; set; }
-
-        public virtual WorkGroupsEntity WorkGroupP { get; set; } = new WorkGroupsEntity();
-        public int GroupId { get; set; }
     }
 }

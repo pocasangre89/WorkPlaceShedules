@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WorkPlaceShedules.Application.Model.Users;
 using WorkPlaceShedules.Application.Model.WorkPlaces;
 using WorkPlaceShedules.Application.Services.Interfaces;
 using WorkPlaceShedules.Domain.Entities;
@@ -10,7 +9,7 @@ namespace WorkPlaceShedules.Application.Services
     public class WorkPlacesService : IWorkPlacesService
     {
         private readonly IWorkPlacesRepository _workPlacesRepository;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper;   
         public WorkPlacesService(IWorkPlacesRepository workPlacesRepository, IMapper mapper)
         {
             _workPlacesRepository = workPlacesRepository;
@@ -41,19 +40,23 @@ namespace WorkPlaceShedules.Application.Services
         {
             var WorkPlacesResponseModel = _mapper.Map<WorkPlacesEntity>(entity);
             await _workPlacesRepository.AddAsync(WorkPlacesResponseModel);
+            await _workPlacesRepository.SaveChangesAsync();
+
         }
 
         public async Task Update(WorkPlacesRequestModel entity, int id)
         {
-            WorkPlacesEntity WorkEntities = _workPlacesRepository.GetByIdAsync(id) ?? throw new Exception("El usuario no existe");
+            WorkPlacesEntity WorkEntities = _workPlacesRepository.GetByIdAsync(id) ?? throw new Exception("El Lugar no existe");
 
-            var usersRequestModel = _mapper.Map(entity, WorkEntities);
-            await _workPlacesRepository.UpdateAsync(usersRequestModel);
+            var workPlacesRequestModel = _mapper.Map(entity, WorkEntities);
+            await _workPlacesRepository.UpdateAsync(workPlacesRequestModel);
+            await _workPlacesRepository.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
         {
             await _workPlacesRepository.DeleteAsync(id);
+            await _workPlacesRepository.SaveChangesAsync();
         }
     }
 }
