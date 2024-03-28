@@ -8,9 +8,9 @@ namespace WorkPlaceShedules.Api.Controllers
     [ApiController]
     public class WorkGroupsController : ControllerBase
     {
-        private readonly IWorkGroupsServices _workGroupsService;
+        private readonly IWorkGroupsService _workGroupsService;
 
-        public WorkGroupsController(IWorkGroupsServices WorkGroupsService)
+        public WorkGroupsController(IWorkGroupsService WorkGroupsService)
         {
             _workGroupsService = WorkGroupsService;
         }

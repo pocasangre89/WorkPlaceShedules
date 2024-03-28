@@ -6,17 +6,15 @@ namespace WorkPlaceShedules.Domain.Entities
     {
         [Key]
         public int WorkPlaceId { get; set; }
+        [Required]
         public string WorkPlaceCode { get; set; } = string.Empty;
+        [Required]
         public string WorkPlaceName { get; set; } = string.Empty;
+        [Required]
         public int WorkPlaceNumber { get; set; }
+        [Required]
         public bool IsActive { get; set; } = true;
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; } = DateTime.Now;
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Modified { get; set; } = DateTime.Now;
         public string Creator { get; set; } = "admin";
         public string? Modifier { get; set; } = "admin";

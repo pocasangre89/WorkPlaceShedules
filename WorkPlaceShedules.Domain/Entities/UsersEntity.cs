@@ -6,16 +6,17 @@ namespace WorkPlaceShedules.Domain.Entities
     {
         [Key]
         public int UserId { get; set; }
+        [Required]
         public string UserCode { get; set; } = string.Empty;
+        [Required]
         public string FullName { get; set; } = string.Empty;
+        [Required]
         public string Email { get; set; } = string.Empty;
+        [Required]
         public bool IsAdmin { get; set; } = false;
+        [Required]
         public bool IsActive { get; set; } = true;
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; } = DateTime.Now;
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Modified { get; set; } = DateTime.Now;
         public string Creator { get; set; } = "admin";
         public string? Modifier { get; set; }

@@ -23,9 +23,9 @@ builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepos
 builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
 
 builder.Services.AddScoped(typeof(IUsersService), typeof(UserServices));
-builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesRepository), typeof(UserWorkPlaceShedulesRepository));
-builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepository));
-builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
+builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesServices), typeof(UserWorkPlaceShedulesServices));
+builder.Services.AddScoped(typeof(IWorkGroupsService), typeof(WorkGroupsServices));
+builder.Services.AddScoped(typeof(IWorkPlacesService), typeof(WorkPlacesService));
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WorkPlaceShedules.Application.Model.WorkGroups;
-using WorkPlaceShedules.Domain.Entities;
+﻿using WorkPlaceShedules.Application.Model.WorkGroups;
 
 namespace WorkPlaceShedules.Application.Services.Interfaces
 {
-    public interface IWorkGroupsServices
+    public interface IWorkGroupsService
     {
         Task<IEnumerable<WorkGroupsResponseModel>> GetAll();
         WorkGroupsResponseModel GetById(int id);
