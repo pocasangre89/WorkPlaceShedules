@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection.Emit;
+using System.Text;
 using WorkPlaceShedules.Application.Services;
 using WorkPlaceShedules.Application.Services.Interfaces;
 using WorkPlaceShedules.Domain.Repositories;
@@ -23,10 +26,25 @@ builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepos
 builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
 
 builder.Services.AddScoped(typeof(IUsersService), typeof(UserServices));
-builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesServices), typeof(UserWorkPlaceShedulesServices));
-builder.Services.AddScoped(typeof(IWorkGroupsService), typeof(WorkGroupsServices));
-builder.Services.AddScoped(typeof(IWorkPlacesService), typeof(WorkPlacesService));
-
+builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesRepository), typeof(UserWorkPlaceShedulesRepository));
+builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepository));
+builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
+builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
+builder.Services.AddScoped(typeof(IJWTService), typeof(JwtService));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
