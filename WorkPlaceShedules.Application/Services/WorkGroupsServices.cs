@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using WorkPlaceShedules.Application.Model.WorkGroups;
+using   .Application.Model.WorkGroups;
 using WorkPlaceShedules.Application.Model.WorkPlaces;
 using WorkPlaceShedules.Application.Services.Interfaces;
 using WorkPlaceShedules.Domain.Entities;

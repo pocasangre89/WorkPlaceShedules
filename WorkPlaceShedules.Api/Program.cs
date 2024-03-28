@@ -30,6 +30,17 @@ builder.Services.AddScoped(typeof(IWorkPlacesService), typeof(WorkPlacesService)
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("newPolicy", app =>
+    {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
 
 var app = builder.Build();
 
@@ -41,6 +52,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("newPolice");
 
 app.UseAuthorization();
 

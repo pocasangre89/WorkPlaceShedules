@@ -7,8 +7,10 @@ namespace WorkPlaceShedules.Domain.Entities
         [Key]
         public int GroupId { get; set; }
         [Required]
+        [MaxLength(500)]
         public string GroupDescription { get; set; } = string.Empty;
         [Required]
+        [MaxLength(250)]
         public string GroupName { get; set; } = string.Empty;
         [Required]
         public bool IsActive { get; set; } = true;

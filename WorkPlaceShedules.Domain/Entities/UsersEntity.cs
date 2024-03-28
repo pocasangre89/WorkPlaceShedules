@@ -7,10 +7,13 @@ namespace WorkPlaceShedules.Domain.Entities
         [Key]
         public int UserId { get; set; }
         [Required]
+        [MaxLength(50)]
         public string UserCode { get; set; } = string.Empty;
         [Required]
+        [MaxLength(200)]
         public string FullName { get; set; } = string.Empty;
         [Required]
+        [MaxLength(100)]
         public string Email { get; set; } = string.Empty;
         [Required]
         public bool IsAdmin { get; set; } = false;
