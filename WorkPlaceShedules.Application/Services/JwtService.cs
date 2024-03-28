@@ -17,11 +17,13 @@ namespace WorkPlaceShedules.Application.Services
     {
         private readonly IUsersRepository _userRepository;
         private readonly IConfiguration _configuration;
+        private readonly IRoleRepository _roleRepository;
 
-        public JwtService(IUsersRepository userRepository, IConfiguration configuration)
+        public JwtService(IUsersRepository userRepository, IConfiguration configuration, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
             _configuration = configuration;
+            _roleRepository = roleRepository;
         }
         public string GenerateToken(string email)
         {
@@ -32,6 +34,8 @@ namespace WorkPlaceShedules.Application.Services
 
             UsersEntity user = _userRepository.GetByEmail(email);
 
+            RoleEntity role = _roleRepository.GetByIdAsync(user.RoleId);
+
             var tokenKey = Encoding.UTF8.GetBytes(key);
 
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor()
@@ -40,6 +44,7 @@ namespace WorkPlaceShedules.Application.Services
                 {
                     new Claim(ClaimTypes.Email, email),
                     new Claim("UserId", user.UserId.ToString()),
+                    new Claim(ClaimTypes.Role, role.Name)
                 }),
                 Expires = System.DateTime.UtcNow.AddMinutes(45),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256),

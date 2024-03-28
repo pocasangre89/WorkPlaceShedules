@@ -1,0 +1,66 @@
+2024-03-28 14:33:17.751 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-28 14:33:18.073 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-28 14:33:18.075 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-28 14:33:19.124 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-28 14:33:19.714 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 601.8274ms
+2024-03-28 14:33:19.754 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-28 14:33:19.754 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-28 14:33:19.787 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 33.32ms
+2024-03-28 14:33:19.868 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.933ms
+2024-03-28 14:33:19.975 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-28 14:33:20.247 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 272.146ms
+2024-03-28 14:35:53.857 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-28 14:35:54.184 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-28 14:35:54.186 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-28 14:35:54.973 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-28 14:35:55.364 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 404.1299ms
+2024-03-28 14:35:55.404 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-28 14:35:55.404 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-28 14:35:55.465 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 53.486ms
+2024-03-28 14:35:55.515 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 110.8888ms
+2024-03-28 14:35:55.655 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-28 14:35:55.768 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 112.4714ms
+2024-03-28 14:37:35.931 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-28 14:37:36.181 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-28 14:37:36.184 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-28 14:37:37.560 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-28 14:37:38.573 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 1022.8565ms
+2024-03-28 14:37:38.726 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-28 14:37:38.726 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-28 14:37:38.749 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 23.5281ms
+2024-03-28 14:37:38.794 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.4221ms
+2024-03-28 14:37:38.865 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-28 14:37:38.996 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 131.2743ms
+2024-03-28 14:46:56.930 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-28 14:46:57.272 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-28 14:46:57.274 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-28 14:46:58.320 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-28 14:46:58.984 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 673.1796ms
+2024-03-28 14:46:58.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-28 14:46:58.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-28 14:46:59.009 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 15.2243ms
+2024-03-28 14:46:59.055 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.3432ms
+2024-03-28 14:46:59.132 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-28 14:46:59.250 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 118.9775ms
+2024-03-28 14:47:19.334 -06:00 [INF] Request starting HTTP/2 POST https://localhost:7259/api/Login - application/json 60
+2024-03-28 14:47:19.911 -06:00 [INF] Executing endpoint 'WorkPlaceShedules.Api.Controllers.LoginController.Login (WorkPlaceShedules.Api)'
+2024-03-28 14:47:19.939 -06:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(WorkPlaceShedules.Application.Model.Users.LoginRequestModel) on controller WorkPlaceShedules.Api.Controllers.LoginController (WorkPlaceShedules.Api).
+2024-03-28 14:47:20.312 -06:00 [INF] Executing action method WorkPlaceShedules.Api.Controllers.LoginController.Login (WorkPlaceShedules.Api) - Validation state: "Valid"
+2024-03-28 14:47:22.099 -06:00 [INF] Executed DbCommand (111ms) [Parameters=[@__email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[Created], [u].[Creator], [u].[Email], [u].[FullName], [u].[IsActive], [u].[IsAdmin], [u].[Modified], [u].[Modifier], [u].[Password], [u].[RoleId], [u].[UserCode]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0
+2024-03-28 14:47:22.262 -06:00 [INF] Executed DbCommand (60ms) [Parameters=[@__email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[Created], [u].[Creator], [u].[Email], [u].[FullName], [u].[IsActive], [u].[IsAdmin], [u].[Modified], [u].[Modifier], [u].[Password], [u].[RoleId], [u].[UserCode]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0
+2024-03-28 14:47:22.379 -06:00 [INF] Executed DbCommand (58ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Description], [r].[Name]
+FROM [Roles] AS [r]
+WHERE [r].[Id] = @__p_0
+2024-03-28 14:47:27.943 -06:00 [INF] El usuario test@gmail.com inicio sesión
+2024-03-28 14:47:27.950 -06:00 [INF] Executed action method WorkPlaceShedules.Api.Controllers.LoginController.Login (WorkPlaceShedules.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7632.7509ms.
+2024-03-28 14:47:27.958 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-03-28 14:47:27.979 -06:00 [INF] Executed action WorkPlaceShedules.Api.Controllers.LoginController.Login (WorkPlaceShedules.Api) in 8031.9315ms
+2024-03-28 14:47:27.982 -06:00 [INF] Executed endpoint 'WorkPlaceShedules.Api.Controllers.LoginController.Login (WorkPlaceShedules.Api)'
+2024-03-28 14:47:27.990 -06:00 [INF] Request finished HTTP/2 POST https://localhost:7259/api/Login - 200 null application/json; charset=utf-8 8655.6546ms

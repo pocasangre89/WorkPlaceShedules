@@ -70,8 +70,13 @@ namespace WorkPlaceShedules.Application.Services
 
             if (loginSuccess) { return _jwtService.GenerateToken(request.Email); }
 
-            return "Ha ocurrido un error al intentar logearse";
+            return null;
 
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

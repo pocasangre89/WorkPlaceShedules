@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Reflection.Emit;
 using System.Text;
 using WorkPlaceShedules.Application.Services;
@@ -31,6 +32,9 @@ builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepos
 builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
 builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
 builder.Services.AddScoped(typeof(IJWTService), typeof(JwtService));
+
+builder.Host.UseSerilog();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -51,6 +55,14 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -60,6 +72,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
