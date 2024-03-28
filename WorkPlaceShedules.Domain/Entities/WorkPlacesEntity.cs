@@ -7,8 +7,10 @@ namespace WorkPlaceShedules.Domain.Entities
         [Key]
         public int WorkPlaceId { get; set; }
         [Required]
+        [MaxLength(50)]
         public string WorkPlaceCode { get; set; } = string.Empty;
         [Required]
+        [MaxLength(500)]
         public string WorkPlaceName { get; set; } = string.Empty;
         [Required]
         public int WorkPlaceNumber { get; set; }
