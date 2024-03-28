@@ -10,5 +10,21 @@ namespace WorkPlaceShedules.Infraestructure.Repositories
         { 
 
         }
+        public UsersEntity GetByEmail(string email)
+        {
+            return this._context.Users.FirstOrDefault(x => x.Email.Equals(email));
+        }
+
+
+        public bool Login(string email, string password)
+        {
+            UsersEntity user = GetByEmail(email) ?? throw new Exception("El usuario no existe");
+
+            if (!user.Password.Equals(password))
+            {
+                throw new Exception("Contraseña incorrecta");
+            }
+            return true;
+        }
     }
 }

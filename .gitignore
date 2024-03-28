@@ -28,3 +28,4 @@ obj/
 
 # Archivos de generación de documentación
 *.xml
+.vs/

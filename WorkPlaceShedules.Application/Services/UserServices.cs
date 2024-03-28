@@ -3,6 +3,7 @@ using WorkPlaceShedules.Application.Model.Users;
 using WorkPlaceShedules.Application.Services.Interfaces;
 using WorkPlaceShedules.Domain.Entities;
 using WorkPlaceShedules.Domain.Repositories;
+using WorkPlaceShedules.Infraestructure.Repositories;
 
 namespace WorkPlaceShedules.Application.Services
 {
@@ -10,9 +11,11 @@ namespace WorkPlaceShedules.Application.Services
     {
         private readonly IUsersRepository _usersRepository;
         private readonly IMapper _mapper;
-        public UserServices(IUsersRepository usersRepository, IMapper mapper)
+        private readonly IJWTService _jwtService;
+        public UserServices(IUsersRepository usersRepository, IMapper mapper, IJWTService jwtService)
         {
             _usersRepository = usersRepository;
+            _jwtService = jwtService;
             _mapper = mapper;
         }
 
@@ -53,6 +56,19 @@ namespace WorkPlaceShedules.Application.Services
         public async Task Delete(int id)
         {
             await _usersRepository.DeleteAsync(id);
+        }
+
+
+
+
+        public async Task<string> Login(LoginRequestModel request)
+        {
+            var loginSuccess = _usersRepository.Login(request.Email, request.Password);
+
+            if (loginSuccess) { return _jwtService.GenerateToken(request.Email); }
+
+            return "Ha ocurrido un error al intentar logearse";
+
         }
     }
 }

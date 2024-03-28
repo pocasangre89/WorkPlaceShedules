@@ -10,6 +10,7 @@ namespace WorkPlaceShedules.Domain.Entities
         public string FullName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public bool IsAdmin { get; set; } = false;
+        public string Password {  get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -19,5 +20,8 @@ namespace WorkPlaceShedules.Domain.Entities
         public DateTime? Modified { get; set; } = DateTime.Now;
         public string Creator { get; set; } = "admin";
         public string? Modifier { get; set; }
+        public int?  RoleId { get; set; }
+        public RoleEntity? Role { get; set; }
+
     }
 }

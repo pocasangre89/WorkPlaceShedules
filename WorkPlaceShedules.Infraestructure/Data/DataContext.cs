@@ -60,5 +60,6 @@ namespace WorkPlaceShedules.Infraestructure.Data
         public DbSet<UserWorkPlaceShedulesEntity> WorkPlaceShedules { get; set; }
         public DbSet<WorkGroupsEntity> WorkGroups { get; set; }
         public DbSet<WorkPlacesEntity> WorkPlaces { get; set; }
+        public DbSet<RoleEntity> Roles { get; set; }
     }
 }
