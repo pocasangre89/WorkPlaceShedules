@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WorkPlaceShedules.Application.Model.Users;
 using WorkPlaceShedules.Application.Model.WorkPlaceShedules;
 using WorkPlaceShedules.Application.Services.Interfaces;
@@ -19,6 +20,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllUserWorkPlaceShedules()
         {
             var userWorkPlaceShedules = await _userWorkPlaceShedules.GetAll();
@@ -27,6 +29,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetuserWorkPlaceShedulesById(int id)
         {
             var userWorkPlaceShedules = _userWorkPlaceShedules.GetById(id);
@@ -35,6 +38,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddUserWorkPlaceShedules([FromBody] UserWorkPlaceShedulesRequestModel entity)
         {
            await _userWorkPlaceShedules.Add(entity);
@@ -43,6 +47,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateUserWorkPlaceShedules([FromBody] UserWorkPlaceShedulesRequestModel entity, int id)
         {
             await _userWorkPlaceShedules.Update(entity, id);
@@ -51,6 +56,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> DeleteUserWorkPlaceShedules(int id)
         {
             await _userWorkPlaceShedules.Delete(id);

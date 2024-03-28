@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WorkPlaceShedules.Application.Model.WorkPlaces;
 using WorkPlaceShedules.Application.Services.Interfaces;
 
@@ -18,6 +19,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllworkPlaces()
         {
             var workPlaces = await _workPlacesService.GetAll();
@@ -26,6 +28,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetWorkPlacesById(int id)
         {
             var workPlaces = _workPlacesService.GetById(id);
@@ -34,6 +37,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddWorkPlaces([FromBody] WorkPlacesRequestModel entity)
         {
            await _workPlacesService.Add(entity);
@@ -42,6 +46,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateWorkPlaces([FromBody] WorkPlacesRequestModel entity, int id)
         {
             await _workPlacesService.Update(entity, id);
@@ -50,6 +55,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> DeleteWorkPlaces(int id)
         {
             await _workPlacesService.Delete(id);
