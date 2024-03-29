@@ -10,5 +10,6 @@ namespace WorkPlaceShedules.Application.Services.Interfaces
         Task Update(UsersRequestModel entity, int id);
         Task Delete(int id);
         Task<string> Login(LoginRequestModel request);
+        Task<int> SaveChangesAsync();
     }
 }

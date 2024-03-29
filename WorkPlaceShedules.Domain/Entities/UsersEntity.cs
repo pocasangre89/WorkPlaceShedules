@@ -24,8 +24,8 @@ namespace WorkPlaceShedules.Domain.Entities
         public DateTime? Modified { get; set; } = DateTime.Now;
         public string Creator { get; set; } = "admin";
         public string? Modifier { get; set; }
-        public int?  RoleId { get; set; }
-        public RoleEntity? Role { get; set; }
+        public int  RoleId { get; set; }
+        public RoleEntity Role { get; set; }
 
     }
 }

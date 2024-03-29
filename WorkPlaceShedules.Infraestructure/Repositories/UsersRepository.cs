@@ -26,5 +26,10 @@ namespace WorkPlaceShedules.Infraestructure.Repositories
             }
             return true;
         }
+
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

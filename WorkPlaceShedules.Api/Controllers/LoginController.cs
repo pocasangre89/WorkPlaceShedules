@@ -12,21 +12,23 @@ namespace WorkPlaceShedules.Api.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IUsersService _userService;
+        private readonly ILogger<LoginController> _logger;
 
-        public LoginController(IUsersService serService)
+        public LoginController(IUsersService serService, ILogger<LoginController> logger)
         {
             _userService = serService;
+            _logger = logger;
         }
 
         [HttpPost]
         public IActionResult Login([FromBody] LoginRequestModel loginRequest)
         {
             var response = _userService.Login(loginRequest);
-            if (response == null)
+            if (response == null || response.Exception!=null)
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = ""+response.Exception.InnerException.Message });
             }
-
+            _logger.LogInformation("El usuario "+loginRequest.Email+" inicio sesión");
             return Ok(response);
         }
 
