@@ -138,3 +138,14 @@ FROM [Users] AS [u]
 2024-03-28 15:45:33.864 -06:00 [INF] Executed action WorkPlaceShedules.Api.Controllers.UsersController.GetAllUsers (WorkPlaceShedules.Api) in 129.3077ms
 2024-03-28 15:45:33.866 -06:00 [INF] Executed endpoint 'WorkPlaceShedules.Api.Controllers.UsersController.GetAllUsers (WorkPlaceShedules.Api)'
 2024-03-28 15:45:33.868 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/api/Users - 200 null application/json; charset=utf-8 218.5537ms
+2024-03-28 20:09:47.957 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-28 20:09:48.497 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-28 20:09:48.499 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-28 20:09:49.880 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-28 20:09:50.286 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 413.9658ms
+2024-03-28 20:09:50.308 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-28 20:09:50.312 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-28 20:09:50.383 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 74.2953ms
+2024-03-28 20:09:50.437 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 125.1975ms
+2024-03-28 20:09:50.492 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-28 20:09:50.597 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 105.2841ms

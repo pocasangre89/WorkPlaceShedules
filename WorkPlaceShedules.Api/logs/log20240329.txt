@@ -1,0 +1,11 @@
+2024-03-29 00:59:46.512 -06:00 [INF] User profile is available. Using 'C:\Users\SamuelGarcia\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-29 00:59:47.072 -06:00 [INF] Now listening on: https://localhost:7259
+2024-03-29 00:59:47.074 -06:00 [INF] Now listening on: http://localhost:5093
+2024-03-29 00:59:47.936 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/index.html - null null
+2024-03-29 00:59:48.866 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/index.html - 200 null text/html;charset=utf-8 935.5378ms
+2024-03-29 00:59:48.886 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-29 00:59:48.894 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/_vs/browserLink - null null
+2024-03-29 00:59:48.896 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 9.4151ms
+2024-03-29 00:59:48.940 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.8213ms
+2024-03-29 00:59:48.996 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - null null
+2024-03-29 00:59:49.104 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 108.7192ms
