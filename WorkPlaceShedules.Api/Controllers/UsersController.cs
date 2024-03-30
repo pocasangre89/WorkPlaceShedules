@@ -47,20 +47,22 @@ namespace WorkPlaceShedules.Api.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Update([FromBody] UsersRequestModel entity, int id)
+        [Route("UpdateUsuario")]
+        public async Task<IActionResult> Update([FromBody] UsersRequestModel entity)
         {
-            await _usersService.Update(entity, id);
-            _logger.LogInformation("Se actualizo el usuario "+id);
-            return Ok();
+            await _usersService.Update(entity);
+            _logger.LogInformation("Se actualizo el usuario "+entity.UserId);
+            return Ok(entity);
         }
 
         [HttpDelete]
         [Authorize(Roles = "Administrador")]
+        [Route("DeleteUsuario")]
         public async Task<IActionResult> Delete(int id)
         {
             await _usersService.Delete(id);
             _logger.LogInformation("Se elimino el usuario " + id);
-            return Ok();
+            return Ok(1);
         }
     }
 }

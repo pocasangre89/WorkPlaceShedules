@@ -6,6 +6,6 @@ namespace WorkPlaceShedules.Domain.Repositories
     {
         bool Login(string username, string password);
         UsersEntity GetByEmail(string username);
-        Task SaveChangesAsync();
+        //Task SaveChangesAsync();
     }
 }

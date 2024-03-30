@@ -7,6 +7,7 @@ using System.Reflection.Emit;
 using System.Text;
 using WorkPlaceShedules.Application.Services;
 using WorkPlaceShedules.Application.Services.Interfaces;
+using WorkPlaceShedules.Domain.Entities;
 using WorkPlaceShedules.Domain.Repositories;
 using WorkPlaceShedules.Infraestructure.Data;
 using WorkPlaceShedules.Infraestructure.Repositories;
@@ -50,9 +51,9 @@ builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepos
 builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
 
 builder.Services.AddScoped(typeof(IUsersService), typeof(UserServices));
-builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesRepository), typeof(UserWorkPlaceShedulesRepository));
-builder.Services.AddScoped(typeof(IWorkGroupsRepository), typeof(WorkGroupsRepository));
-builder.Services.AddScoped(typeof(IWorkPlacesRepository), typeof(WorkPlacesRepository));
+builder.Services.AddScoped(typeof(IUserWorkPlaceShedulesServices), typeof(UserWorkPlaceShedulesServices));
+builder.Services.AddScoped(typeof(IWorkGroupsService), typeof(WorkGroupsServices));
+builder.Services.AddScoped(typeof(IWorkPlacesService), typeof(WorkPlacesService));
 builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
 builder.Services.AddScoped(typeof(IJWTService), typeof(JwtService));
 

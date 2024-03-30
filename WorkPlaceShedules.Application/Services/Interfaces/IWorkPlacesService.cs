@@ -7,7 +7,7 @@ namespace WorkPlaceShedules.Application.Services.Interfaces
         Task<IEnumerable<WorkPlacesResponseModel>> GetAll();
         WorkPlacesResponseModel GetById(int id);
         Task Add(WorkPlacesRequestModel entity);
-        Task Update(WorkPlacesRequestModel entity, int id);
+        Task Update(WorkPlacesRequestModel entity);
         Task Delete(int id);
     }
 }

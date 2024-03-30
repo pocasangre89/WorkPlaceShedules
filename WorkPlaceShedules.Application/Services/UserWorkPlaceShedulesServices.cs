@@ -45,9 +45,9 @@ namespace WorkPlaceShedules.Application.Services
 
         }
 
-        public async Task Update(UserWorkPlaceShedulesRequestModel entity, int id)
+        public async Task Update(UserWorkPlaceShedulesRequestModel entity)
         {
-            UserWorkPlaceShedulesEntity userWorkPlaceShedulesResponse = _userWorkPlaceShedules.GetByIdAsync(id) ?? throw new Exception("Error en la data");
+            UserWorkPlaceShedulesEntity userWorkPlaceShedulesResponse = _userWorkPlaceShedules.GetByIdAsync(entity.WorkPlaceId) ?? throw new Exception("Error en la data");
 
             var userWorkPlaceShedules = _mapper.Map(entity, userWorkPlaceShedulesResponse);
             await _userWorkPlaceShedules.UpdateAsync(userWorkPlaceShedules);

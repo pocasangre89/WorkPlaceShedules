@@ -26,6 +26,7 @@ namespace WorkPlaceShedules.Domain.Entities
         public string? Modifier { get; set; }
         public int  RoleId { get; set; }
         public RoleEntity Role { get; set; }
+        public int GroupId { get; set; }
 
     }
 }

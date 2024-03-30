@@ -2,6 +2,7 @@
 {
     public class WorkPlacesRequestModel
     {
+        public int WorkPlaceId { get; set; }
         public string WorkPlaceCode { get; set; } = string.Empty;
         public string WorkPlaceName { get; set; } = string.Empty;
         public int WorkPlaceNumber { get; set; }

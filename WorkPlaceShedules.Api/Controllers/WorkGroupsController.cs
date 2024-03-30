@@ -47,20 +47,22 @@ namespace WorkPlaceShedules.Api.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> UpdateWorkGroups([FromBody] WorkGroupsRequestModel entity, int id)
+        [Route("UpdateWorkGroups")]
+        public async Task<IActionResult> UpdateWorkGroups([FromBody] WorkGroupsRequestModel entity)
         {
-            await _workGroupsService.Update(entity, id);
-            _logger.LogInformation("Se actualizo el grupo de trabajo " + id);
-            return Ok();
+            await _workGroupsService.Update(entity);
+            _logger.LogInformation("Se actualizo el grupo de trabajo " + entity.GroupId);
+            return Ok(entity);
         }
 
         [HttpDelete]
         [Authorize]
+        [Route("DeleteWorkGroups")]
         public async Task<IActionResult> DeleteWorkGroups(int id)
         {
             await _workGroupsService.Delete(id);
             _logger.LogInformation("Se elimino el grupo de trabajo " + id);
-            return Ok();
+            return Ok(1);
         }
     }
 }

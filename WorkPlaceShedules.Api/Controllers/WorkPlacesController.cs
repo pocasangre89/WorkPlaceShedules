@@ -47,21 +47,23 @@ namespace WorkPlaceShedules.Api.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> UpdateWorkPlaces([FromBody] WorkPlacesRequestModel entity, int id)
+        [Route("UpdateWorkPlaces")]
+        public async Task<IActionResult> UpdateWorkPlaces([FromBody] WorkPlacesRequestModel entity)
         {
-            await _workPlacesService.Update(entity, id);
-            _logger.LogInformation("Se actualizo el espacio de trabajo " + id);
-            return Ok();
+            await _workPlacesService.Update(entity);
+            _logger.LogInformation("Se actualizo el espacio de trabajo " + entity.WorkPlaceId);
+            return Ok(entity);
         }
 
         [HttpDelete]
         [Authorize]
+        [Route("DeleteWorkPlaces")]
         public async Task<IActionResult> DeleteWorkPlaces(int id)
         {
             await _workPlacesService.Delete(id);
 
             _logger.LogInformation("Se elimino el espacio de trabajo " + id);
-            return Ok();
+            return Ok(1);
         }
     }
 }

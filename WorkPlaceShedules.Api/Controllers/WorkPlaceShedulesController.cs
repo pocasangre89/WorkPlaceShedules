@@ -48,10 +48,10 @@ namespace WorkPlaceShedules.Api.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> UpdateUserWorkPlaceShedules([FromBody] UserWorkPlaceShedulesRequestModel entity, int id)
+        public async Task<IActionResult> UpdateUserWorkPlaceShedules([FromBody] UserWorkPlaceShedulesRequestModel entity)
         {
-            await _userWorkPlaceShedules.Update(entity, id);
-            _logger.LogInformation("Se actualizo el espacio de trabajo de usuario" + id);
+            await _userWorkPlaceShedules.Update(entity);
+            _logger.LogInformation("Se actualizo el espacio de trabajo de usuario" + entity.UserWorkPlaceScheduleId);
             return Ok();
         }
 

@@ -7,7 +7,7 @@ namespace WorkPlaceShedules.Application.Services.Interfaces
         Task<IEnumerable<UsersResponseModel>> GetAll();
         UsersResponseModel GetById(int id);
         Task Add(UsersRequestModel entity);
-        Task Update(UsersRequestModel entity, int id);
+        Task Update(UsersRequestModel entity);
         Task Delete(int id);
         Task<string> Login(LoginRequestModel request);
         Task<int> SaveChangesAsync();

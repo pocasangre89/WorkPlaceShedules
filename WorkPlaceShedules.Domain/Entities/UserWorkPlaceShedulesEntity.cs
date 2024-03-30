@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WorkPlaceShedules.Domain.Entities
 {
@@ -21,7 +16,7 @@ namespace WorkPlaceShedules.Domain.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Schedule { get; set; }
-        [Required] 
+        [Required]
         public bool IsAdminRequest { get; set; } = false;
         [Required]
         public bool IsActive { get; set; } = true;

@@ -9,6 +9,7 @@ namespace WorkPlaceShedules.Application.Model.WorkPlaceShedules
 {
     public class UserWorkPlaceShedulesRequestModel
     {
+        public int UserWorkPlaceScheduleId { get; set; }
         public DateTime Schedule { get; set; }
         public bool IsAdminRequest { get; set; } = false;
         public bool IsActive { get; set; } = true;
@@ -16,14 +17,8 @@ namespace WorkPlaceShedules.Application.Model.WorkPlaceShedules
         public DateTime Modified { get; set; }
         public string Creator { get; set; } = string.Empty;
         public string Modifier { get; set; } = string.Empty;
-
-        public virtual UsersEntity UsersEntityP { get; set; } = new UsersEntity();
         public int UserId { get; set; }
-
-        public virtual WorkPlacesEntity WorkPlacesP { get; set; } = new WorkPlacesEntity();
         public int WorkPlaceId { get; set; }
-
-        public virtual WorkGroupsEntity WorkGroupP { get; set; } = new WorkGroupsEntity();
         public int GroupId { get; set; }
     }
 }

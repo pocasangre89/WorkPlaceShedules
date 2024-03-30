@@ -44,9 +44,9 @@ namespace WorkPlaceShedules.Application.Services
             await _workPlacesRepository.SaveChangesAsync();
         }
 
-        public async Task Update(WorkGroupsRequestModel entity, int id)
+        public async Task Update(WorkGroupsRequestModel entity)
         {
-            WorkGroupsEntity WorkEntities = _workPlacesRepository.GetByIdAsync(id) ?? throw new Exception("El grupo no existe");
+            WorkGroupsEntity WorkEntities = _workPlacesRepository.GetByIdAsync(entity.GroupId) ?? throw new Exception("El grupo no existe");
 
             var WorkGroups = _mapper.Map(entity, WorkEntities);
             await _workPlacesRepository.UpdateAsync(WorkGroups);

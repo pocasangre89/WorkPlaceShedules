@@ -42,13 +42,14 @@ namespace WorkPlaceShedules.Application.Services
         public async Task Add(UsersRequestModel entity)
         {
             var usersResponseModel = _mapper.Map<UsersEntity>(entity);
+            usersResponseModel.Password = "Password123";
             await _usersRepository.AddAsync(usersResponseModel);
             await _usersRepository.SaveChangesAsync();
         }
 
-        public async Task Update(UsersRequestModel entity, int id)
+        public async Task Update(UsersRequestModel entity)
         {
-            UsersEntity usersEntity = _usersRepository.GetByIdAsync(id) ?? throw new Exception("El usuario no existe");
+            UsersEntity usersEntity = _usersRepository.GetByIdAsync(entity.UserId) ?? throw new Exception("El usuario no existe");
 
             var usersRequestModel = _mapper.Map(entity, usersEntity);
             await _usersRepository.UpdateAsync(usersRequestModel);

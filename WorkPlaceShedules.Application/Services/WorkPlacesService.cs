@@ -44,9 +44,9 @@ namespace WorkPlaceShedules.Application.Services
 
         }
 
-        public async Task Update(WorkPlacesRequestModel entity, int id)
+        public async Task Update(WorkPlacesRequestModel entity)
         {
-            WorkPlacesEntity WorkEntities = _workPlacesRepository.GetByIdAsync(id) ?? throw new Exception("El Lugar no existe");
+            WorkPlacesEntity WorkEntities = _workPlacesRepository.GetByIdAsync(entity.WorkPlaceId) ?? throw new Exception("El Lugar no existe");
 
             var workPlacesRequestModel = _mapper.Map(entity, WorkEntities);
             await _workPlacesRepository.UpdateAsync(workPlacesRequestModel);
