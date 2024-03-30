@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkPlaceShedules.Infraestr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkPlaceShedules.Api", "WorkPlaceShedules.Api\WorkPlaceShedules.Api.csproj", "{0AACC56C-1015-4A7E-A3C4-53C799F94CC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkPlaceShedules.Api.Tests", "WorkPlaceShedules.Api.Tests\WorkPlaceShedules.Api.Tests.csproj", "{448C0E8C-C95B-452C-9DBA-0A39153FDC37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0AACC56C-1015-4A7E-A3C4-53C799F94CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AACC56C-1015-4A7E-A3C4-53C799F94CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AACC56C-1015-4A7E-A3C4-53C799F94CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448C0E8C-C95B-452C-9DBA-0A39153FDC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448C0E8C-C95B-452C-9DBA-0A39153FDC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448C0E8C-C95B-452C-9DBA-0A39153FDC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448C0E8C-C95B-452C-9DBA-0A39153FDC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
