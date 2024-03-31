@@ -8,12 +8,12 @@ namespace WorkPlaceShedules.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WorkPlaceShedulesController : ControllerBase
+    public class UsersWorkPlaceShedulesController : ControllerBase
     {
         private readonly IUserWorkPlaceShedulesServices _userWorkPlaceShedules;
-        private readonly ILogger<WorkPlaceShedulesController> _logger;
+        private readonly ILogger<UsersWorkPlaceShedulesController> _logger;
 
-        public WorkPlaceShedulesController(IUserWorkPlaceShedulesServices userWorkPlaceShedules, ILogger<WorkPlaceShedulesController> logger)
+        public UsersWorkPlaceShedulesController(IUserWorkPlaceShedulesServices userWorkPlaceShedules, ILogger<UsersWorkPlaceShedulesController> logger)
         {
             _userWorkPlaceShedules = userWorkPlaceShedules;
             _logger = logger;
@@ -24,7 +24,7 @@ namespace WorkPlaceShedules.Api.Controllers
         public async Task<IActionResult> GetAllUserWorkPlaceShedules()
         {
             var userWorkPlaceShedules = await _userWorkPlaceShedules.GetAll();
-            _logger.LogInformation("Se obtuvieron todos los uasuario por espacios de trabajo");
+            _logger.LogInformation("Se obtuvieron todos los usuarios por espacios de trabajo");
             return (Ok(userWorkPlaceShedules));
         }
 
@@ -41,9 +41,9 @@ namespace WorkPlaceShedules.Api.Controllers
         [Authorize]
         public async Task<IActionResult> AddUserWorkPlaceShedules([FromBody] UserWorkPlaceShedulesRequestModel entity)
         {
-           await _userWorkPlaceShedules.Add(entity);
+           int respData = await _userWorkPlaceShedules.Add(entity);
             _logger.LogInformation("Se agrego un espacio de trabajo de usuario");
-            return Ok(entity);
+            return Ok(respData);
         }
 
         [HttpPut]

@@ -9,10 +9,6 @@ namespace WorkPlaceShedules.Domain.Entities
         [Required]
         public int UserId { get; set; }
         [Required]
-        public int WorkPlaceId { get; set; }
-        [Required]
-        public int GroupId { get; set; }
-        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Schedule { get; set; }

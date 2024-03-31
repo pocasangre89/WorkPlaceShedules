@@ -19,7 +19,7 @@ namespace WorkPlaceShedules.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="Administrador")]
+        [Authorize]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _usersService.GetAll();

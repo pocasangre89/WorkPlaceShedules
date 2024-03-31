@@ -12,7 +12,7 @@ namespace WorkPlaceShedules.Application.Services.Interfaces
     {
         Task<IEnumerable<UserWorkPlaceShedulesResponseModel>> GetAll();
         UserWorkPlaceShedulesResponseModel GetById(int id);
-        Task Add(UserWorkPlaceShedulesRequestModel entity);
+        Task<int> Add(UserWorkPlaceShedulesRequestModel entity);
         Task Update(UserWorkPlaceShedulesRequestModel entity);
         Task Delete(int id);
     }

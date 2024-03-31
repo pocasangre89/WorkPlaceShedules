@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using WorkPlaceShedules.Application.Model.Users;
@@ -15,18 +16,15 @@ namespace WorkPlaceShedules.Application.Model.WorkPlaceShedules
     {
         [Key]
         public int UserWorkPlaceScheduleId { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        [Required]
         public DateTime Schedule { get; set; }
         public bool IsAdminRequest { get; set; } = false;
         public bool IsActive { get; set; } = true;
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
-        public string Creator { get; set; } = string.Empty;
-        public string Modifier { get; set; } = string.Empty;
-
-        public UsersResponseModel Users { get; set; }
-
-        public WorkPlacesResponseModel WorkPlaces { get; set; }
-
-        public WorkGroupsResponseModel WorkGroups { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Modified { get; set; } = DateTime.Now;
+        public string Creator { get; set; } = "admin";
+        public string Modifier { get; set; } = "admin";
     }
 }

@@ -8,7 +8,7 @@
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
 
-        void Add(T entity);
+        Task<int> AddShedule(T entity);
         //Task<T> GetByIdAsync(int id);
         Task SaveChangesAsync();
     }
