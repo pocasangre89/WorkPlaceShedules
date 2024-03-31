@@ -1,0 +1,258 @@
+﻿@page "/Calendar"
+
+@inject SweetAlertService Swal;
+@inject IUserWorkPlaceShedulesService userWorkPlaceShedules;
+@inject IUsersService UsersService;
+
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components.Authorization;
+@using System.Globalization
+@using System.Linq
+
+<h3>Calendario de Asistencias al Trabajo</h3>
+
+<button class="btn btn-primary" @onclick="ShowModal">Nueva Asignaci&oacute;n</button>
+<hr />
+<div>
+    <button class="btn btn-warning" @onclick="GoToPreviousMonth">Anterior</button>
+    <b><span>@CurrentMonth</span></b>
+    <button class="btn btn-success" @onclick="GoToNextMonth">Siguiente</button>
+    <button class="btn btn-info" @onclick="ShowCurrentWeek">Mostrar Semana Actual</button>
+</div>
+<hr />
+@* Construcción del Calendario para mostrar las personas que asistiran, de forma presencial al trabajo *@
+<table class="table table-bordered" style="width: 100%">
+    <thead>
+        <tr>
+            @if (DaysOfWeek != null)
+            {
+                @foreach (var day in DaysOfWeek)
+                {
+                    <th>@day</th>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (CalendarWeeks != null)
+        {
+            @foreach (var week in CalendarWeeks)
+            {
+                <tr>
+                    @foreach (var day in week)
+                    {
+                        <td @onclick="() => SelectDate(day)" style="text-align:center">
+                            @if (day.Month == CurrentDate.Month)
+                            {
+                                <b>@day.Day</b>
+                                @foreach (var userSchedule in listadoUsuariosEspacio)
+                                {
+                                    if (day.Date != null)
+                                    {
+                                        if (userSchedule.Schedule.Date == day.Date)
+                                        {
+                                            @foreach (var userData in GetUserSchedules(userSchedule.UserId))
+                                            {
+                                                <div>@userData.FullName</div>
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <text></text>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@if (modalVisible)
+{
+    <div class="modal" tabindex="-1" role="dialog" style="display:block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Horario de Asistencia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="@userWorkPlaceShedulesData" OnValidSubmit="SaveUserWorkPlaceShedules">
+                        <DataAnnotationsValidator />
+                        <div class="mb-3">
+                            <label for="LastName" class="form-label">Fecha de Asistencia</label>
+                            <div class="col-md-4">
+                                <InputDate class="form-control" @bind-Value="userWorkPlaceShedulesData.Schedule" />
+                            </div>
+                            <ValidationMessage For="@(() => userWorkPlaceShedulesData.Schedule)" />
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" onsubmit="">Save</button>
+
+                            <button type="button" class="btn btn-secondary" @onclick="Close">Close</button>
+                        </div>
+                    </EditForm>
+
+                    @if (mostrarError)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <p>@errorMessage</p>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private DateTime CurrentDate = DateTime.Today;
+    private CultureInfo culture = new CultureInfo("es-ES"); // Establecer la configuración regional en español
+
+    private List<string> DaysOfWeek;
+    private List<List<DateTime>> CalendarWeeks;
+    private string CurrentMonth;
+    List<UsersDTO>? listaUsuarios = null;
+    List<UserWorkPlaceShedulesDTO>? listadoUsuariosEspacio = null;
+    private bool mostrarError = false;
+    private string errorMessage;
+
+    AddShedules addShedules;
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+
+    bool modalVisible = false;
+    UserWorkPlaceShedulesDTO userWorkPlaceShedulesData = new UserWorkPlaceShedulesDTO();
+
+    [Inject]
+    private NavigationManager Navigation { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        listadoUsuariosEspacio = await userWorkPlaceShedules.GetUserWorkPlaceShedules();
+        listaUsuarios = await UsersService.GetUsers();
+        SetDaysOfWeek();
+        UpdateCalendar();
+    }
+
+    private void SetDaysOfWeek()
+    {
+        DaysOfWeek = new List<string>();
+        DayOfWeek firstDayOfWeek = culture.DateTimeFormat.FirstDayOfWeek;
+        for (int i = 0; i < 7; i++)
+        {
+            DaysOfWeek.Add(culture.DateTimeFormat.DayNames[(int)(firstDayOfWeek + i) % 7]);
+        }
+    }
+
+    private void UpdateCalendar()
+    {
+        CalendarWeeks = GetCalendarWeeks(CurrentDate.Year, CurrentDate.Month);
+        CurrentMonth = culture.DateTimeFormat.MonthNames[CurrentDate.Month - 1] + " " + CurrentDate.Year.ToString();
+    }
+
+    private List<List<DateTime>> GetCalendarWeeks(int year, int month)
+    {
+        List<List<DateTime>> weeks = new List<List<DateTime>>();
+        DateTime firstDayOfMonth = new DateTime(year, month, 1);
+        DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+        int offset = ((int)firstDayOfMonth.DayOfWeek - 1 + 7) % 7; // Asegurar que el domingo (0) sea el último día
+        DateTime currentDate = firstDayOfMonth.AddDays(-offset);
+
+        while (currentDate <= lastDayOfMonth)
+        {
+            List<DateTime> week = new List<DateTime>();
+            for (int i = 0; i < 7; i++)
+            {
+                week.Add(currentDate);
+                currentDate = currentDate.AddDays(1);
+            }
+            weeks.Add(week);
+        }
+
+        return weeks;
+    }
+
+    private void GoToPreviousMonth()
+    {
+        CurrentDate = CurrentDate.AddMonths(-1);
+        UpdateCalendar();
+    }
+
+    private void GoToNextMonth()
+    {
+        CurrentDate = CurrentDate.AddMonths(1);
+        UpdateCalendar();
+    }
+
+    private void ShowCurrentWeek()
+    {
+        // Obtener la semana actual
+        DateTime currentDay = DateTime.Today;
+        CalendarWeeks = GetCalendarWeeks(currentDay.Year, currentDay.Month);
+        foreach (var week in CalendarWeeks)
+        {
+            if (week.Any(day => day.Date == currentDay.Date))
+            {
+                CalendarWeeks.Clear();
+                CalendarWeeks.Add(week);
+                break;
+            }
+        }
+    }
+
+    private void SelectDate(DateTime date)
+    {
+        // Aquí puedes manejar la selección de la fecha
+        Console.WriteLine("Fecha seleccionada: " + date.ToShortDateString());
+    }
+
+    private IEnumerable<UsersDTO> GetUserSchedules(int userId)
+    {
+        return listaUsuarios.Where(schedule => schedule.UserId == userId);
+    }
+
+
+    void ShowModal()
+    {
+        modalVisible = true;
+    }
+
+    async Task HideModal()
+    {
+        modalVisible = false;
+        await Task.Delay(300); // Delay for smoother transition
+    }
+
+    private async Task SaveUserWorkPlaceShedules()
+    {
+        var respData = await userWorkPlaceShedules.SaveUserWorkPlaceShedules(userWorkPlaceShedulesData);
+        if (respData != 1)
+        {
+            mostrarError = true;
+
+            errorMessage = "Error Horario seleccionado ya fue ingresado para este usuario";
+        }
+        else
+        {
+            Navigation.NavigateTo("/Calendar", true);
+        }
+    }
+
+    private async Task Close()
+    {
+        modalVisible = false;
+    }
+}
