@@ -39,6 +39,8 @@ builder.Services.AddSwaggerGen(o =>
                 {
                     {securityScheme, Array.Empty<string>()}
                 });
+    o.SwaggerDoc("v1", new OpenApiInfo { Title = "WorkPlaceShedules", Version = "v1" });
+
 });
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -96,12 +98,16 @@ Log.Logger = new LoggerConfiguration()
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "WorkPlaceShedules");
+        c.RoutePrefix = "swagger"; // Opcional: define la ruta de la interfaz de usuario de Swagger
+    });
     app.UseAuthentication();
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAnyOrigin");
